@@ -1,0 +1,17 @@
+{
+  "name": "@elementree/router",
+  "version": "0.1.0",
+  "description": "Class-based, data-only router for Elementree",
+  "main": "router.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elementreejs/router.git"
+  },
+  "keywords": [],
+  "author": "Mark Stahl <mjstahl@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elementreejs/router/issues"
+  },
+  "homepage": "https://github.com/elementreejs/router#readme"
+}
