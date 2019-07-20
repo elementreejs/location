@@ -1,7 +1,7 @@
 {
   "name": "@elementree/router",
   "version": "0.2.0",
-  "description": "Class-based, data-only router for Elementree",
+  "description": "Data-only, observable route for Elementree",
   "main": "router.js",
   "repository": {
     "type": "git",
