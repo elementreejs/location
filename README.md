@@ -1,2 +1,2 @@
 # @elementree/router
-Class-based, data only router for Elementree
+Data-only, observable route for Elementree
