@@ -1,6 +1,6 @@
 {
   "name": "@elementree/location",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Data-only, observable location for Elementree",
   "main": "index.js",
   "scripts": {
