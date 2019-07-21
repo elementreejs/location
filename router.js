@@ -1,10 +1,19 @@
+let path = null
 let pathMatches = null
+let query = null
+let route = null
 
 export default function routeData (state) {
+  if (route !== state.route) {
+    route = state.route
+    path = query = null
+  }
+
   return {
     get path () {
-      if (!pathMatches) this._buildMatches()
+      if (path && state.route === route) return path
 
+      if (!pathMatches) this._buildMatches()
       const found = Object.keys(pathMatches).find(match => {
         return new RegExp(match, 'g').test(state.route)
       })
@@ -12,26 +21,30 @@ export default function routeData (state) {
       if (!matched) return {}
 
       const values = state.route.match(matched.regex).slice(1)
-      return matched.vars.reduce((v, p, i) => {
+      path = matched.vars.reduce((v, p, i) => {
         return Object.defineProperty(v, p, {
           get () { return values[i] },
           set: this._pathSetter(matched, p)
         })
       }, {})
+      return path
     },
 
     get query () {
+      if (query && state.route === route) return query
+
       const search = document.location.search
-      if (!search) return search
+      if (!search) return {}
 
       const pairs = search.slice(1).split('&')
-      return pairs.reduce((q, p) => {
+      query = pairs.reduce((q, p) => {
         const [key, value] = p.split('=')
         return Object.defineProperty(q, key, {
           get () { return value },
           set: this._querySetter(key, value)
         })
       }, {})
+      return query
     },
 
     _buildMatches: function () {
