@@ -1,7 +1,7 @@
 {
-  "name": "@elementree/router",
+  "name": "@elementree/location",
   "version": "0.2.2",
-  "description": "Data-only, observable route for Elementree",
+  "description": "Data-only, observable location for Elementree",
   "main": "router.js",
   "scripts": {
     "lint": "standard --fix"
