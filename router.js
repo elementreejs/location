@@ -1,16 +1,10 @@
-const FIND_ROUTE_VAR = new RegExp('(:\\w+)', 'g')
-const REPL_ROUTE_VAR = '(\\w+)'
+let pathMatches = null
 
 export default function routeData (state) {
-  const pathMatches = state.routes.reduce((matches, path) => {
-    const vars = (path.match(FIND_ROUTE_VAR) || []).map(v => v.slice(1))
-    const regex = path.replace(FIND_ROUTE_VAR, REPL_ROUTE_VAR)
-    matches[regex] = { path, regex, vars }
-    return matches
-  }, {})
-
   return {
     get path () {
+      if (!pathMatches) this._buildMatches()
+
       const found = Object.keys(pathMatches).find(match => {
         return new RegExp(match, 'g').test(state.route)
       })
@@ -38,6 +32,22 @@ export default function routeData (state) {
           set: this._querySetter(key, value)
         })
       }, {})
+    },
+
+    _buildMatches: function () {
+      const FIND_ROUTE_VAR = new RegExp('(:\\w+)', 'g')
+      const REPL_ROUTE_VAR = '(\\w+)'
+
+      if (state.routes) {
+        pathMatches = state.routes.reduce((matches, path) => {
+          const vars = (path.match(FIND_ROUTE_VAR) || []).map(v => v.slice(1))
+          const regex = path.replace(FIND_ROUTE_VAR, REPL_ROUTE_VAR)
+          matches[regex] = { path, regex, vars }
+          return matches
+        }, {})
+      } else {
+        pathMatches = {}
+      }
     },
 
     _pathSetter: function (match, prop) {

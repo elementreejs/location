@@ -3,6 +3,9 @@
   "version": "0.2.0",
   "description": "Data-only, observable route for Elementree",
   "main": "router.js",
+  "scripts": {
+    "lint": "standard --fix"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elementreejs/router.git"
@@ -13,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/elementreejs/router/issues"
   },
-  "homepage": "https://github.com/elementreejs/router#readme"
+  "homepage": "https://github.com/elementreejs/router#readme",
+  "devDependencies": {
+    "standard": "^13.0.2"
+  }
 }
