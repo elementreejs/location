@@ -2,7 +2,7 @@
   "name": "@elementree/location",
   "version": "0.2.2",
   "description": "Data-only, observable location for Elementree",
-  "main": "router.js",
+  "main": "index.js",
   "scripts": {
     "lint": "standard --fix"
   },
@@ -10,7 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/elementreejs/router.git"
   },
-  "keywords": [],
   "author": "Mark Stahl <mjstahl@gmail.com>",
   "license": "MIT",
   "bugs": {
